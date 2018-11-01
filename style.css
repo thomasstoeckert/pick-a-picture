@@ -1,0 +1,45 @@
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+#outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+#middle {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+
+#inner {
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+#preText {
+    text-align: left;
+    font-style: italic;
+}
+
+#movieTitle {
+    text-align: center;
+}
+
+#movieYear {
+    text-align: center;
+}
+
+#refresh {
+    text-align: right;
+    font-style: italic;
+    text-decoration: underline;
+}
