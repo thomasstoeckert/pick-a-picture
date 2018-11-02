@@ -1,22 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pick-A-Picture</title>
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100i,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100i,700" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (req.readyState == 4 && req.status == 200) {
+                var jsonData = JSON.parse(req.response)
+                var table = jsonData["valueRanges"];
+                var nameData = table[0]["values"];
+                var dateData = table[1]["values"];
+                var selection = Math.floor(Math.random() * nameData.length);
+                console.log('Index: ' + selection + ' Title Selected: ' + nameData[selection][0] + ' Date: ' +
+                    dateData[selection][0]);
+                $('#movieBox').find("h1").text(nameData[selection]);
+                $('#movieBox').find("h2").text('('+ dateData[selection] + ')');
+            }
+        }
+        req.open("GET",
+            "https://sheets.googleapis.com/v4/spreadsheets/1ybXr7pnVcWfeLJNit8rmIj1Cdc7WoIVg4BtCX_GFepY/values:batchGet?ranges=A%3AA&ranges=E%3AE&key=AIzaSyC-KLF691r5c3Xbvj2fUmBR7WfFyZsLl4g"
+        );
+        req.send();
+    </script>
 </head>
+
 <body>
     <div id="outer">
         <div id="middle">
             <div id="inner">
                 <h3 id="preText">You should watch...</h3>
-                <h1 id="movieTitle">Movie Title</h1>
-                <h2 id="movieYear">(2018)</h2>
-                <div id="refresh"><a><h3>...or maybe not</h3></a></div>
+
+                <div id="movieBox">
+                    <h1>Movie Title</h1>
+                    <h2>(2018)</h2>
+                </div>
+
+                <div><a onclick="location.reload()">
+                        <h3 id="postText">...or maybe not</h3>
+                    </a></div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

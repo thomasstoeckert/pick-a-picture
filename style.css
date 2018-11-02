@@ -21,6 +21,7 @@ body {
 }
 
 #inner {
+    min-width: 300px;
     max-width: 30%;
     margin: 0 auto;
 }
@@ -30,15 +31,11 @@ body {
     font-style: italic;
 }
 
-#movieTitle {
+#movieBox {
     text-align: center;
 }
 
-#movieYear {
-    text-align: center;
-}
-
-#refresh {
+#postText {
     text-align: right;
     font-style: italic;
     text-decoration: underline;
