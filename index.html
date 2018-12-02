@@ -17,15 +17,17 @@
                 var table = jsonData["valueRanges"];
                 var nameData = table[0]["values"];
                 var dateData = table[1]["values"];
+                var runtimeData = table[2]["values];
                 var selection = Math.floor(Math.random() * (nameData.length - 1)) + 1;
                 console.log('Index: ' + selection + ' Title Selected: ' + nameData[selection][0] + ' Date: ' +
-                    dateData[selection][0]);
+                    dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0]);
                 $('#movieBox').find("h1").text(nameData[selection]);
                 $('#movieBox').find("h2").text('('+ dateData[selection] + ')');
+                $('#movieBox').find("h3").text(runtimeData[selection] + 'minutes');
             }
         }
         req.open("GET",
-            "https://sheets.googleapis.com/v4/spreadsheets/1ybXr7pnVcWfeLJNit8rmIj1Cdc7WoIVg4BtCX_GFepY/values:batchGet?ranges=A%3AA&ranges=E%3AE&key=AIzaSyC-KLF691r5c3Xbvj2fUmBR7WfFyZsLl4g"
+            "https://sheets.googleapis.com/v4/spreadsheets/1ybXr7pnVcWfeLJNit8rmIj1Cdc7WoIVg4BtCX_GFepY/values:batchGet?ranges=A%3AA&ranges=E%3AE&ranges=H%3AH&key=AIzaSyC-KLF691r5c3Xbvj2fUmBR7WfFyZsLl4g"
         );
         req.send();
     </script>
@@ -40,6 +42,7 @@
                 <div id="movieBox">
                     <h1>Movie Title</h1>
                     <h2>(2018)</h2>
+                    <h3>(0 minutes)</h3>
                 </div>
 
                 <div><a onclick="location.reload()">
