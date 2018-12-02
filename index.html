@@ -23,7 +23,11 @@
                     dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0]);
                 $('#movieBox').find("h1").text(nameData[selection]);
                 $('#movieBox').find("h2").text('('+ dateData[selection] + ')');
-                $('#movieBox').find("h3").text('(' + runtimeData[selection] + 'minutes' + ')');
+                if(runtimeData[selection] == ""){
+                    $('#movieBox').find("h3").text('(' + runtimeData[selection] + ' minutes' + ')');    
+                } else {
+                    $('#movieBox').find("h3").text('');
+                }
             }
         }
         req.open("GET",
