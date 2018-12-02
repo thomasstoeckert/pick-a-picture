@@ -24,9 +24,9 @@
                 $('#movieBox').find("h1").text(nameData[selection]);
                 $('#movieBox').find("h2").text('('+ dateData[selection] + ')');
                 if(runtimeData[selection] == ""){
-                    $('#movieBox').find("h3").text('(' + runtimeData[selection] + ' minutes' + ')');    
+                    $('#movieBox').find("h3").text('');    
                 } else {
-                    $('#movieBox').find("h3").text('');
+                    $('#movieBox').find("h3").text('(' + runtimeData[selection] + ' minutes' + ')');
                 }
             }
         }
