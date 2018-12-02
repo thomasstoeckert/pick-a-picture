@@ -19,6 +19,12 @@
                 var dateData = table[1]["values"];
                 var runtimeData = table[2]["values"];
                 var ownerData = table[3]["values"];
+                var str = nameData.length - 1;
+                var nameDataEnd = nameData.substr(str - 5, str);
+                if nameDataEnd = ", The" {
+                    var nameData = "The " + nameData.substr(0, str - 5);
+                } else {
+                }
                 var selection = Math.floor(Math.random() * (nameData.length - 1)) + 1;
                 console.log('Index: ' + selection + ' Title Selected: ' + nameData[selection][0] + ' Date: ' +
                     dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0] + ' Owner: ' + ownerData[selection][0]);
