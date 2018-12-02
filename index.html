@@ -22,7 +22,7 @@
                 var selection = Math.floor(Math.random() * (nameData.length - 1)) + 1;
                 console.log('Index: ' + selection + ' Title Selected: ' + nameData[selection][0] + ' Date: ' +
                     dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0] + ' Owner: ' + ownerData[selection][0]);
-                $('#movieBox').find("h4").text(ownerData[selection] + '\' copy of')
+                $('#movieBox').find("h4").text(ownerData[selection] + '\'s copy of')
                 $('#movieBox').find("h1").text(nameData[selection]);
                 $('#movieBox').find("h2").text('('+ dateData[selection] + ')');
                 if(runtimeData[selection] == ""){
