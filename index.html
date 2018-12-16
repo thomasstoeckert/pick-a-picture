@@ -21,7 +21,7 @@
                 var ownerData = table[3]["values"];
                 var theCheck = nameData.indexOf(", The");
                 if (theCheck != -1) {
-                    var nameData = "The " + nameData.substr(0, theCheck - 1);
+                    nameData = "The " + nameData.substr(0, theCheck - 1);
                 }
                 var selection = Math.floor(Math.random() * (nameData.length - 1)) + 1;
                 console.log('Index: ' + selection + ' Title Selected: ' + nameData[selection][0] + ' Date: ' +
