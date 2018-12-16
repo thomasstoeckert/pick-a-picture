@@ -13,27 +13,37 @@
         var req = new XMLHttpRequest();
         req.onreadystatechange = function () {
             if (req.readyState == 4 && req.status == 200) {
+                // Establish the data from the spreadsheet as variables
                 var jsonData = JSON.parse(req.response)
                 var table = jsonData["valueRanges"];
                 var nameData = table[0]["values"];
                 var dateData = table[1]["values"];
                 var runtimeData = table[2]["values"];
                 var ownerData = table[3]["values"];
-                var selectedName;
                 
+                // Selecting the random index for the table
                 var selection = Math.floor(Math.random() * (nameData.length - 1)) + 1;
                 
-                selectedName = nameData[selection][0];
+                // Names are stored with the "The" portion of the title as a suffix in the spreadsheet.
+                // This allows better (and easier) sorting. To display it, we take the name and lop the back off
+                // and attach "the" to the front if it needs it
+                var selectedName = nameData[selection][0];
                 var theIndex = selectedName.indexOf(", The");
                 
                 if (theIndex != -1) {
                     selectedName = "The " + selectedName.substr(0, theIndex);
                 }
+                
+                // Print our debug information
                 console.log('Index: ' + selection + ' Title Selected: ' + selectedName + ' Date: ' +
                     dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0] + ' Owner: ' + ownerData[selection][0]);
+                
+                // Assign data to the varying headers
                 $('#ownerText').text(ownerData[selection] + '\'s copy of')
                 $('#titleText').text(selectedName);
                 $('#dateText').text('('+ dateData[selection] + ')');
+                // Runtime data does not exist for every entry. As such, we do not display the information if it doesn't
+                // exist
                 if(runtimeData[selection] == ""){
                     $('#runtimeText').text('');    
                 } else {
