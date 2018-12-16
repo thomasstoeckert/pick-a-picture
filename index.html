@@ -19,16 +19,20 @@
                 var dateData = table[1]["values"];
                 var runtimeData = table[2]["values"];
                 var ownerData = table[3]["values"];
+                var theCheck = nameData.indexOf(", The");
+                if theCheck != -1 {
+                    var nameData = "The " + nameData.substr(0, theCheck - 1);
+                }
                 var selection = Math.floor(Math.random() * (nameData.length - 1)) + 1;
                 console.log('Index: ' + selection + ' Title Selected: ' + nameData[selection][0] + ' Date: ' +
                     dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0] + ' Owner: ' + ownerData[selection][0]);
-                $('#movieBox').find("h4").text(ownerData[selection] + '\'s copy of')
-                $('#movieBox').find("h1").text(nameData[selection]);
-                $('#movieBox').find("h2").text('('+ dateData[selection] + ')');
+                $('#ownerText').text(ownerData[selection] + '\'s copy of')
+                $('#titleText').text(nameData[selection]);
+                $('#dateText').text('('+ dateData[selection] + ')');
                 if(runtimeData[selection] == ""){
-                    $('#movieBox').find("h3").text('');    
+                    $('#runtimeText').text('');    
                 } else {
-                    $('#movieBox').find("h3").text('(' + runtimeData[selection] + ' minutes' + ')');
+                    $('#runtimeText').text('(' + runtimeData[selection] + ' minutes' + ')');
                 }
             }
         }
@@ -46,10 +50,10 @@
                 <h3 id="preText">You should watch...</h3>
 
                 <div id="movieBox">
-                    <h4>Owner's copy of</h4>
-                    <h1>Movie Title</h1>
-                    <h2>(2018)</h2>
-                    <h3>(0 minutes)</h3>
+                    <h3 id="ownerText">Owner's copy of</h3>
+                    <h1 id="titleText">Movie Title</h1>
+                    <h2 id="dateText">(2018)</h2>
+                    <h3 id="runtimeText">(0 minutes)</h3>
                 </div>
 
                 <div><a onclick="location.reload()">
