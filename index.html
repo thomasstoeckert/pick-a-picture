@@ -20,7 +20,7 @@
                 var runtimeData = table[2]["values"];
                 var ownerData = table[3]["values"];
                 var theCheck = nameData.indexOf(", The");
-                if theCheck != -1 {
+                if (theCheck != -1) {
                     var nameData = "The " + nameData.substr(0, theCheck - 1);
                 }
                 var selection = Math.floor(Math.random() * (nameData.length - 1)) + 1;
