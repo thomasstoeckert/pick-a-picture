@@ -27,7 +27,7 @@
                 var theIndex = selectedName.indexOf(", The");
                 
                 if (theIndex != -1) {
-                    selectedName = "The " + nameData.substr(0, theIndex - 1);
+                    selectedName = "The " + selectedName.substr(0, theIndex - 1);
                 }
                 console.log('Index: ' + selection + ' Title Selected: ' + selectedName + ' Date: ' +
                     dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0] + ' Owner: ' + ownerData[selection][0]);
