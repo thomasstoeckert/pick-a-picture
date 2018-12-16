@@ -27,7 +27,7 @@
                 console.log('Index: ' + selection + ' Title Selected: ' + nameData[selection][0] + ' Date: ' +
                     dateData[selection][0] + ' Runtime: ' + runtimeData[selection][0] + ' Owner: ' + ownerData[selection][0]);
                 $('#ownerText').text(ownerData[selection] + '\'s copy of')
-                $('#titleText').text(nameData[selection]);
+                $('#titleText').text(nameData);
                 $('#dateText').text('('+ dateData[selection] + ')');
                 if(runtimeData[selection] == ""){
                     $('#runtimeText').text('');    
